@@ -3,7 +3,6 @@ using namespace std;
 int main(){
     int n, count=0,maxC=0;
     string s;
-    char str=s[0];
     cin >> n;
     cin >> s;
     for(int i=0; i<n-1; i++){
