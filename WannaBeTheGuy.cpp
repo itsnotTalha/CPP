@@ -2,10 +2,8 @@
 using namespace std;
 int main(){
     int n;
-    bool a=false;
     set<int>result;
     cin>>n;
-
     int p;
     cin>>p;
     for(int i=0; i<p;i++){
