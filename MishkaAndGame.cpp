@@ -7,8 +7,12 @@ int main(){
     while(n--){
         int a,b;
         cin>>a>>b;
-        (a>b ? mishk++ : chris++);
+         if (a > b) 
+            {mishk++;} 
+        else if (b > a) 
+            {chris++;} 
     }
+
     if(mishk>chris){
         cout<<"Mishka";
     }else if(chris>mishk){
