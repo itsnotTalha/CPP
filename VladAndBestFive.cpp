@@ -14,6 +14,8 @@ int main(){
                 bCount++;
             }
         }
+
+        //BLAH BLAH
         cout<<(aCount>bCount?"A":"B")<<endl;
     }
 }
