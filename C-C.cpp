@@ -1,25 +1,35 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
-long long int sum(long long int n){
-    long long int sum=0;
-    while(n!=0){
-        sum+=n%10;
-        n/=10;
+
+long long digitSum(long long n) {
+    long long sum = 0;
+    while (n > 0) {
+        sum += n % 10;
+        n /= 10;
     }
     return sum;
 }
-int main(){
-    long long int n,s;
-    cin>>n>>s;
-    long long int count = 0;
-    while(true){
-        if(n-sum(n)>=s){
-            count++;
-            n--;
-        }else{
-            break;
+
+int main() {
+    long long n, s;
+    cin >> n >> s;
+
+    long long low = 1, high = n, ans = -1;
+    while (low <= high) {
+        long long mid = low + (high - low) / 2;
+        if (mid - digitSum(mid) >= s) {
+            ans = mid;
+            high = mid - 1;  
+        } else {
+            low = mid + 1;
         }
     }
-    cout<<count<<endl;
+
+    if (ans == -1) {
+        cout << 0 << endl;
+    } else {
+        cout << (n - ans + 1) << endl;
+    }
+
     return 0;
 }
