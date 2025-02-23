@@ -4,5 +4,10 @@ using namespace std;
 int main(){
     int n;
     sin(n);
-    cout<<sqrt(n-1)<<"\n";
+    int count=0;
+    for(int i=2;i<=n;i++){
+        if(n%i==0)
+        count++;
+    }
+    cout<<count<<endl;
 }
