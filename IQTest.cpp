@@ -10,10 +10,10 @@ int main(){
         cin>>a[i];
         if(a[i]%2==0){
             c1++;
-            ec = a[i]; 
+            ec = i+1; 
         }else{
             c2++;
-            oc = a[i]; 
+            oc = i+1; 
         }
     }
     if(c1==1){
