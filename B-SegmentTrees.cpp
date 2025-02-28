@@ -29,18 +29,16 @@ int main() {
         int n;
         cin >> n;
         vll a(n);
-        vii b(n);
-        int indx;
+        vii up;
+        ll gMax = 0; 
+    
         for0(i, n) {
             cin >> a[i];
         }
-        vector<pair<int, ll>> updates; 
+
         int q;
         cin >> q;
-        vii up(q);
-        vvll tmp;
-        ll gMax ;
-                
+
         for0(i, q) {
             short choice;
             cin >> choice;
@@ -48,21 +46,20 @@ int main() {
                 ll x, p;
                 cin >> x >> p;
                 x--;
-                up[i]={x,p};
+                up.push_back({x, p});
             } else {
                 ll v;
                 cin >> v;
-                gMax = max(up[i-1].se,v);
-                indx=i;
+                gMax = max(gMax, v);
             }
         }
 
-        for0(i, q) {
+        for0(i, n) {
             a[i] = max(a[i], gMax);
         }
 
-        for(int i = indx;i<q;i++){
-            a[up[i].fi]=up[i].se;
+        for (auto [index, value] : up) {
+            a[index] = value;
         }
 
         for0(i, n) {
