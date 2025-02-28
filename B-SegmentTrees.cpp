@@ -13,9 +13,9 @@ using namespace std;
 #define for0(i, n) for (int i = 0; i < (int)(n); ++i)
 typedef vector<int> vi;
 typedef vector<vi> vvi;
-typedef pair<int, int> ii;
-typedef vector<ii> vii;
 typedef long long ll;
+typedef pair<ll, ll> ii;
+typedef vector<ii> vii;
 typedef vector<ll> vll;
 typedef vector<vll> vvll;
 typedef double ld;
@@ -29,14 +29,17 @@ int main() {
         int n;
         cin >> n;
         vll a(n);
+        vii b(n);
+        int indx;
         for0(i, n) {
             cin >> a[i];
         }
         vector<pair<int, ll>> updates; 
         int q;
         cin >> q;
+        vii up(q);
         vvll tmp;
-        ll gMax = LLONG_MIN;
+        ll gMax ;
                 
         for0(i, q) {
             short choice;
@@ -45,22 +48,21 @@ int main() {
                 ll x, p;
                 cin >> x >> p;
                 x--;
-                updates.pb({x, p});
+                up[i]={x,p};
             } else {
                 ll v;
                 cin >> v;
-                gMax = max(a[i],v);
+                gMax = max(up[i-1].se,v);
+                indx=i;
             }
         }
 
-        for0(i, n) {
+        for0(i, q) {
             a[i] = max(a[i], gMax);
         }
 
-        for (auto& update : updates) {
-            int idx = update.fi;
-            ll new_val = update.se;
-            a[idx] =  new_val;  
+        for(int i = indx;i<q;i++){
+            a[up[i].fi]=up[i].se;
         }
 
         for0(i, n) {
