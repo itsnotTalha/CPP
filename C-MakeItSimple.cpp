@@ -27,14 +27,18 @@ int main() {
     cin>>N>>M;
     int cnt=0;
     vector<pair<int, ll>> updates;
+    map<pair<int, int>, int> freq;
     for0(i,M){
         int u,v;
         cin>>u>>v;
-        updates.pb({u,v});
+        pair<int, int> p = {min(u, v), max(u, v)};
+        freq[p]++;
     }
-    for0(i,M){
-        if((updates[i].fi==updates[i].se)||(updates[i].fi==updates[i+1].fi)||(updates[i].se==updates[i+1].se&&updates[i].fi<updates[i].se&&updates[i+1].se<updates[i+1].fi)){
-            cnt++;
+    for (auto &[p, count] : freq) {
+        if(p.fi==p.se){
+            cnt+=count;
+        }else{
+            cnt+=count-1;
         }
     }
     cout<<cnt<<endl;
