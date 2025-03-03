@@ -23,8 +23,7 @@ int main(){
         }
         res[j + 1] = t;  
     }
-    for(int i=0;i<n;i++)
-    {
+    for(int i=0;i<n;i++){
         if(res[i].first==1){
             cout<<i+1;
             break;
