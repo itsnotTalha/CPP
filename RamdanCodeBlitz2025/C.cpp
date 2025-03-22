@@ -5,18 +5,26 @@ int main(){
     cin>>T;
     while(T--){
         int N;
-        cin>>N;
-        int maxsum=0, minsum=0;
-        for(int i=0;i<N;i++){
-            int x;
-            cin>>x;
-            maxsum+=x;
-            minsum+=x-1;
+        cin >> N;  
+        vector<int> B(N);
+        
+        for (int i = 0; i < N; ++i) {
+            cin >> B[i];
         }
-        if (minsum<100 && maxsum >= 100 ) {
+        
+        int sum = accumulate(B.begin(), B.end(), 0);
+        
+        if (sum == 100) {
             cout << "YES" << endl;
-        } else {
+        } else if (sum < 100) {
             cout << "NO" << endl;
+        } else {
+            int sumin = sum-N;           
+            if (sumin <= 100) {
+                cout << "YES" << endl;
+            } else {
+                cout << "NO" << endl;
+            }
         }
     }
 }
