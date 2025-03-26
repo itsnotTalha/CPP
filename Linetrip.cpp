@@ -6,19 +6,13 @@ int main(){
     while(t--){
         int n,x;
         cin>>n>>x;
-        vector<int>a(n);
-        for(int i=0;i<n;i++){
-            cin>>a[i];
+        int prev = 0, ans = 0;
+        for (int i = 0; i < n; ++i) {
+            int a; cin >> a;
+            ans = max(ans, a - prev);
+            prev = a;
         }
-        int min=a[0];
-        for(int i=1;i<n;i++){
-            if(a[i]-a[i-1]>min){
-                min=a[i]-a[i-1];
-            }
-            if(i==n-1)
-            if((x-a[i])*2>min)
-            min=(x-a[i])*2;
-        }
-        cout<<min<<endl;
+    ans = max(ans, 2 * (x - prev));
+        cout<<ans<<endl;
     }
 }
