@@ -8,16 +8,15 @@ int main() {
     int n, m;
     cin >> n >> m;
     vector<int> k(m);
-    for (int i = 0; i < m; ++i) {
+    for0(i,m) {
         cin >> k[i];
     }
     
-    vector<bool> dp(n + 1, false); 
-    int partc = 0,lp=0;
-    while(n>0){
-        n-=k[lp];
-        if(partc%2==1)lp++;
-        if(lp>=k.size())lp=0;
+    int partc = 1,lp=0;
+    for(int i=0;i<m;){
+        n-=k[i];
+        if(partc%2==0)i++;
+       // if(lp>=k.size())lp=0;
         //if(n<=0)break;
         partc++;
         //cout<<partc<<" n "<<n<<" k "<<k[lp]<<" lp "<<lp<<endl;
