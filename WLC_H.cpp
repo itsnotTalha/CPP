@@ -8,7 +8,7 @@ int main(){
     vector<int>a(N);
     for0(i,N) cin>>a[i];
     int cnt = 1, tmp = a[0], flag = 0;
-    for1(i,N-1){
+    for(int i =1; i<N ; i++){
         if(a[i] == tmp){
             cnt++;
             if(cnt == 3){
@@ -20,5 +20,5 @@ int main(){
             cnt = 1;
         }
     }
-    cout<<(flag ? "YES" : "NO")<<endl;
+    cout<<(flag ? "Yes" : "No")<<endl;
 }
