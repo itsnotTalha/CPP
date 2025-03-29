@@ -5,4 +5,4 @@ int main(){
     cin>>n>>b;
     b*=10;
     cout<<(n>=b?"YES":"NO")<<endl;
-}
+}   

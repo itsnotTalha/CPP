@@ -11,18 +11,22 @@ int main() {
     for0(i,m) {
         cin >> k[i];
     }
-    
-    int partc = 1,lp=0;
-    for(int i=0;i<m;){
-        n-=k[i];
-        if(partc%2==0)i++;
-       // if(lp>=k.size())lp=0;
-        //if(n<=0)break;
-        partc++;
-        //cout<<partc<<" n "<<n<<" k "<<k[lp]<<" lp "<<lp<<endl;
-    }
 
-    cout << (partc%2==0 ? 1 : 2) << endl;
+    vector<bool> dp(n + 1, false);
+    dp[0] = false;
+
+    for1(i,n) {
+        for0(j,m){
+            if (i - k[j] >= 0 && !dp[i - k[j]]) {
+                dp[i] = true;
+                break;
+            }
+        }
+    }
+    
+    
+
+    cout << (dp[n] ? 2 : 1) << endl;
     
     return 0;
 }
