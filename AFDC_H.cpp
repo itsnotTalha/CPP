@@ -17,5 +17,13 @@ int main(){
         break;
         case 7 : cout<<"DAY";
         break;
+        case 8 : cout<<"CONTEST";
+        break;
+        case 9 : cout<<"THIS";
+        break;
+        case 10 : cout<<"IS";
+        break;
+        case 11 : cout<<"FUNNY";
+        break;
     }
 }
