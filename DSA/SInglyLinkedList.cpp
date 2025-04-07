@@ -79,7 +79,23 @@ void delAt(int k){
     Node* tmp = ptr->next;
     ptr->next = tmp->next;
     delete tmp;
+}
 
+void cheatsort(){
+    Node* ptr = head;
+    vector<int> a;
+    while(ptr!=NULL){
+        a.push_back(ptr->value);
+        ptr = ptr->next;
+    }
+    sort(a.begin(), a.end());
+    ptr = head;
+    int i = 0;
+    while(ptr!=NULL){
+        ptr->value = a[i];
+        ptr = ptr->next;
+        i++;
+    }
 }
 
 void display(){
@@ -102,5 +118,8 @@ int main(){
     delAt(2);
     delFirst();
     delLast();
+    addLast(45);
+    addLast(55);
+    cheatsort();
     display(); 
 }
