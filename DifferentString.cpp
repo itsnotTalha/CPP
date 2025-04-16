@@ -9,7 +9,7 @@ int main(){
         bool chk = true;
         for(int i =0;i<s.size();i++){
            if(s[i]!=s[0]) {
-            swap(s[i], s[s.size()-i-1]);
+            swap(s[i], s[0]);
             chk = false;
             break;
            }
