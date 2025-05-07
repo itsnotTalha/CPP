@@ -30,35 +30,23 @@ typedef pair<int, int> pii;
 
 #define ip(a, n) for0(i, n) cin >> a[i]
 
+void strCmp(string s1, string s2){
+    int temp=0;
+    for(int i =0; i<s1.size();i++){
+        if(tolower(s1[i]) < tolower(s2[i])){
+            temp = -1;
+            break;
+        }else if(tolower(s1[i]) > tolower(s2[i])){
+            temp=1;
+            break;
+        }
+    }
+    cout<<temp;
+}
+
 int main() {
     Fast_io;
-    int n; cin>>n;
-    vector<int>a(n);
-    ip(a,n);
-    //sort(all(a), greater<int>());
-    ll ser=0, dim=0;
-    int st = 0, end = n-1;
-    int i = 0;
-    while(st<=end){
-        if(i%2==0){
-            if(a[st]>a[end]){
-                ser+=a[st];
-                st++;
-            }else{
-                ser+=a[end];
-                end--;
-            }
-        }else{
-            if(a[st]>a[end]){
-                dim+=a[st];
-                st++;
-            }else{
-                dim+=a[end];
-                end--;
-            }
-        }
-        i++;
-    }
-    cout<<ser<<" "<<dim;
+    string s1, s2; cin>>s1>>s2;
+    strCmp(s1,s2);
     return 0;
 }
