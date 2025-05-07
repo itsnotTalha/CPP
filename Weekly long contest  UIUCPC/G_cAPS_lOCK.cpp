@@ -33,8 +33,20 @@ typedef pair<int, int> pii;
 int main() {
     Fast_io;
     string s; cin>>s;
-    transform(all(s), s.begin(), ::tolower);
-    s[0] = toupper(s[0]);
+    int size = s.size();
+        int chk = 0;
+        for1(i, size-1){
+            if(islower(s[i])){
+                chk++;
+            }
+        }
+        if(islower(s[0])&&chk==0){
+            transform(all(s), s.begin(), ::tolower);
+            s[0] = toupper(s[0]);   
+        }else if(isupper(s[0])&&(size-chk)==size){
+            transform(all(s), s.begin(), ::tolower);
+        }else{
+        }
     cout<<s<<endl;
     return 0;
 }
