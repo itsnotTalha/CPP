@@ -32,41 +32,54 @@ typedef pair<int, int> pii;
 
 int main() {
     Fast_io;
-    ll n; cin>>n;
+    ll n; cin >> n;
     vector<ll> p(n);
     vector<ll> a(n);
     vector<ll> b(n);
-    ip(p,n);
-    ip(a,n);
-    ip(b,n);
-    ll m; cin>>m;
+    ip(p, n);
+    ip(a, n);
+    ip(b, n);
+    ll m; cin >> m;
     vector<ll> c(m);
-    ip(c,m);
-    vector<ll>ans(m,-1);
-    map<ll,set<ll>>setf,setb;
-    for0(i,n){
-        setf[a[i]].insert(p[i]);
-        setb[b[i]].insert(p[i]);
+    ip(c, m);
+    vector<ll> ans(m, -1);
+
+    unordered_map<ll, set<ll>> cp;
+    unordered_map<ll, pair<ll, ll>> priceperCol;
+
+    for0(i, n) {
+        cp[a[i]].insert(p[i]);
+        cp[b[i]].insert(p[i]);
+        priceperCol[p[i]] =MP(a[i], b[i]);
     }
 
-    
-    // for0(i,m){
-    //     ans[i]=INT_MAX;
-    //     int tmp;
-    //     for0(j,n){
-    //         if((a[j]==c[i]||b[j]==c[i])&&p[j]>0){
-    //             if (p[j] < ans[i]) {
-    //                 ans[i] = p[j];
-    //                 tmp = j;
-    //             }
-    //         }
-    //     }
-    //     p[tmp]=0;
-    //     if(ans[i]==INT_MAX) ans[i]= -1;
-    // }
-    for(auto x : setf){
-        cout<<x.ff<<" ";
+    unordered_set<ll> up;
+
+    for0(i, m) {
+        ll color = c[i];
+        if (cp.find(color) == cp.end()) {
+            continue; 
+        }
+        auto& prices = cp[color];
+        while (!prices.empty()) {
+            ll price = *prices.begin();
+            if (up.find(price) == up.end()) {
+                ans[i] = price;
+                up.insert(price);
+                auto colors = priceperCol[price];
+                cp[colors.ff].erase(price);
+                cp[colors.ss].erase(price);
+                break;
+            } else {
+                prices.erase(prices.begin());
+            }
+        }
     }
-    cout<<endl;
+
+    for0(i, m) {
+        cout << ans[i] << " ";
+    }
+    cout << endl;
+
     return 0;
 }
