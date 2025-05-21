@@ -35,42 +35,32 @@ typedef pair<int, int> pii;
 int main() {
     Fast_io;
     int num; cin>>num;
-    string s = to_string(num);
-    vector<int>ev;
-    vector<int>od;
-    vector<int>nums;
-    int chk = 1;
-    for0(i,s.size()){
-        if(i%2==0){
-            od.pb(s[i]-'0');
-        }else{
-            ev.pb(s[i]-'0');
-        }
-        nums.emplace_back(s[s.size()-i-1]-'0');
+    vector<int> ev, od, digits;
+    int temp = num;
+    while (temp) {
+        int d = temp % 10;
+        if (d % 2 == 0) ev.pb(d);
+        else od.pb(d);
+        digits.pb(d);
+        temp /= 10;
     }
-    // sort(all(od),greater<int>());
-    // sort(all(ev),greater<int>());
-    sortall(od);
+
     sortall(ev);
+    sortall(od);
+
     int ans = 0;
-    //ll s = chk;
-    vector<int>solver(s.size());
-        int i=0;
-        int j=0;
-        int k=0;
-        int t = s.size();
-        while(t--){
-            if(nums[i]%2){
-                solver[i]=(od[j++]);
-            }
-            else{
-                solver[i]=(ev[k++]);
-            }
-            i++;
+
+    for (int k = digits.size() - 1; k >= 0; k--) {
+        int d = digits[k];
+        if (d % 2 == 0) {
+            ans = ans * 10 + ev.back();
+            ev.ppb();
+        } else {
+            ans = ans * 10 + od.back();
+            od.ppb();
         }
-        for(int i=solver.size()-1;i>=0;i--){
-            ans=ans*10+solver[i];
-        }
+    }
+
     print(ans);
     return 0;
 }
