@@ -36,17 +36,16 @@ int main() {
     while (t--) {
         int n;
         cin >> n;
-        vi a(n);
-        ip(a,n);
-        ll aCnt = 1;
-        int crnt = INT_MAX*-1;
+        int prev = INT_MIN;
+        ll ans = 0;
         for0(i,n){
-            if(a[i]>crnt+1){
-                aCnt++;
+            int x; cin>>x;
+            if(x>prev+1){
+                ans++;
+                prev = x;
             }
-            crnt = a[i];
         }
-        cout<<aCnt<<endl;
+        cout<<ans<<endl;
     }
     return 0;
 }
