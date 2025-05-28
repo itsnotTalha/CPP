@@ -30,16 +30,40 @@ typedef pair<int, int> pii;
 
 #define ip(a, n) for0(i, n) cin >> a[i]
 
+bool allSame(string s) {
+    int n = s.length();
+    if (n == 0) return true;
+    for0(i,n){
+        if (s[i] != s[0])
+            return false;
+    }
+    return true;
+}
+
 int main() {
     Fast_io;
-    int n; cin>>n;
-    vi a(n), b(n);
-    ip(a,n);
-    int prev = -INT_MAX;
+    int n, m; cin>>n>>m;
+    vector<string>s(n);
+    ip(s,n);
+    bool ans = true;
     for0(i,n){
-        if(prev<a[i] and a[i+1]>a[i]){
-            
+        if(!allSame(s[i])){
+            ans = false;
+            break;
         }
+    }
+    if(ans){
+        for0(i,n){
+            for(int j = i+1; j<n; j++){
+                if(s[i][0]==s[j][0]){
+                    cout<<"NO"<<endl;
+                    return 0;
+                }
+            }
+        }
+        cout<<"YES"<<endl;
+    }else{
+        cout<<"NO"<<endl;
     }
     return 0;
 }
