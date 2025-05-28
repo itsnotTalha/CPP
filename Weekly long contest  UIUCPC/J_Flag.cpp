@@ -53,13 +53,11 @@ int main() {
         }
     }
     if(ans){
-        for0(i,n){
-            for(int j = i+1; j<n; j++){
-                if(s[i][0]==s[j][0]){
+        for0(i,n-1){
+                if(s[i][0]==s[i+1][0]){
                     cout<<"NO"<<endl;
                     return 0;
                 }
-            }
         }
         cout<<"YES"<<endl;
     }else{
