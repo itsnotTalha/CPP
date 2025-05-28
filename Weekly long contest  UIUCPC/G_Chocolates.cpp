@@ -30,28 +30,8 @@ typedef pair<int, int> pii;
 
 #define ip(a, n) for0(i, n) cin >> a[i]
 
-bool isPrime(ll num) {
-    if (num <= 1) return false;
-    if (num <= 3) return true;
-    if (num % 2 == 0 || num % 3 == 0) return false;
-
-    for (int i = 5; i * i <= num; i += 6) {
-        if (num % i == 0 || num % (i + 2) == 0) return false;
-    }
-    return true;
-}
-
 int main() {
     Fast_io;
-    ll n; cin>>n;
-    if(isPrime(n-2)){
-        cout<<2<<" "<<n-2;
-    }else if(isPrime(n-3)){
-        cout<<3<<" "<<n-3;
-    }else if(isPrime(n-5)){
-        cout<<5<<" "<<n-5;
-    }else{
-        cout<<-1<<endl;
-    }
+
     return 0;
 }
