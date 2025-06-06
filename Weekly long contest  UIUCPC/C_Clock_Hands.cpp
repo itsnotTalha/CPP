@@ -33,21 +33,24 @@ typedef pair<int, int> pii;
 int main() {
     Fast_io;
     string s; cin>>s;
-    string s1,s2;
-    if(s.size()==5){
-        s1+=s[0];
-        s1+=s[1];
-        s2+=s[3];
-        s2+=s[4];
-    }else{
-        s1+=s[0];
-        s2+=s[2];
-        s2+=s[3];
+    while(s!="0:00"){
+        string s1,s2;
+        if(s.size()==5){
+            s1+=s[0];
+            s1+=s[1];
+            s2+=s[3];
+            s2+=s[4];
+        }else{
+            s1+=s[0];
+            s2+=s[2];
+            s2+=s[3];
+        }
+        int h = stoi(s1);
+        int m = stoi(s2);
+        double ans = abs(30*h - ((double)11/2)*(m));
+        ans = min(ans, 360-ans);
+        cout << fixed << setprecision(3) << ans << endl;
+        cin>>s;
     }
-    int h = stoi(s1);
-    int m = stoi(s2);
-    double ans = abs(30*h - ((double)11/2)*(m));
-    ans = min(ans, 360-ans);
-    cout << fixed << setprecision(3) << ans << endl;
     return 0;
 }
