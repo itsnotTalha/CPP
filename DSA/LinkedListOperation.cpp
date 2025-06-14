@@ -112,9 +112,8 @@ int main()
             int k; cin>>k;
             int size = ListSize(head);
             if(findNth(head,k)==NULL or k<0 or k>=size){
+                //nth position a null thakle er pore ar kisu thakbe naki?
                 cout<<"Invalid K-th position"<<endl;
-                //continue;
-                // 1 2 3 4 | 5 NULL
             }else{
                 node* firstList;
                 node* lastList;
