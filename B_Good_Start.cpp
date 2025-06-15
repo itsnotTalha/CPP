@@ -30,31 +30,23 @@ typedef pair<int, int> pii;
 
 #define ip(a, n) for0(i, n) cin >> a[i]
 
+bool hobeNaki(ll w, ll h, ll a, ll b, ll x1, ll x2, ll y1, ll y2) {
+    int rx1 = ((x1 % a) + a) % a;
+     int rx2 = ((x2 % a) + a) % a;
+    int ry1 = ((y1 % b) + b) % b;
+    int ry2 = ((y2 % b) + b) % b;
+    bool verti =  (rx1 == rx2) and ((x1 != x2) or (ry1 == ry2));
+    bool horiz = (ry1 == ry2) and ((y1 != y2) or (rx1 == rx2));
+    return verti or horiz;
+}
+
 int main() {
     Fast_io;
     int t; cin>>t;
     while(t--){
-        int n;
-        cin >> n;
-
-        vector<tuple<int, int, int>> a;
-        a.emplace_back(1, 1, n);
-
-        for (int d = 2; d <= n; ++d) {
-            int x = n - d + 1;
-            int y = x + 1;
-
-            a.emplace_back(d, 1, x);
-            if (y <= n) {
-                a.emplace_back(d, y, n);
-            }
-        }
-
-        cout << a.size() << '\n';
-        for (auto &[x, y, z] : a) {
-            cout << x << " " << y << " " << z << '\n';
-        }
+        ll w,h,a,b; cin>>w>>h>>a>>b;
+        ll x1, x2, y1, y2; cin>>x1>>y1>>y1>>y2;
+        cout<<(hobeNaki(w,h,a,b, x1, x2, y1, y2) ? "YES" : "NO")<<endl;
     }
-
     return 0;
-} 
+}
