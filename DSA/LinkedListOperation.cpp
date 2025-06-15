@@ -1,3 +1,6 @@
+//Name: Your Name Here
+//ID: Your ID Here
+
 #include<stdio.h>
 #include<stdlib.h>
 #include<bits/stdc++.h>
@@ -308,6 +311,7 @@ node* delete_nth(node *head, int n, int position)
     return head;
 }
 
+//Newly added functions
 node* findNth(node* head, int n){
     node* temp = head;
     if(temp==NULL){
@@ -346,7 +350,7 @@ void bubbleSort(node* head){
     }
     cout<<"Linked list sorted using Bubble Sort."<<endl;
 }
-
+//This creates a node of kth partition's first part
 node* copyFirst(node* head, int k){
     node* newHead = new node{head->data, NULL};
     node* newTail = newHead;
