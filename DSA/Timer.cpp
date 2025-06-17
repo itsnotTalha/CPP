@@ -76,6 +76,7 @@ int main() {
 
     setConsoleSize(26, 12);
     hideCursor();
+    auto startTime = chrono::system_clock::now();
 
     for (int i = 0; i <= targetSeconds; ++i) {
         system("cls");
@@ -84,7 +85,8 @@ int main() {
         cout << endl << endl;
         cout << "----------Timer----------\n\t" << formatTime(i) << endl;
         cout << "-------Remaining---------\n\t" << formatTime(targetSeconds - i) << endl << endl << endl;
-        this_thread::sleep_for(chrono::seconds(1));
+        chrono::system_clock::time_point nextTick = startTime + chrono::seconds(i + 1);
+        this_thread::sleep_until(nextTick);
     }
 
     system("cls");
