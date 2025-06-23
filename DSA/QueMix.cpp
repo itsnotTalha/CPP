@@ -81,13 +81,58 @@ void printC(){
     cout<<endl;
 }
 
+//Linkedlist
+struct Node{
+    int data;
+    Node *next;
+};
+Node *front, *back;
+bool isMt(){
+    return front==NULL;
+}
+void enQue(int n){
+    Node *newNode = new Node;
+    newNode->data = n;
+    newNode->next = NULL;
+    if(isMt()){
+        front = back = newNode;
+        return;
+    }
+    back->next = newNode;
+    back = newNode;
+}
+void dque(){
+    Node *tmp = front;
+    if(tmp){
+        if(front==back)
+        front = back = NULL;
+        else
+        front = front->next;
+        delete tmp;
+    }else{
+        cout<<"UNDERFLOW"<<endl;
+        return;
+    }
+}
+void printLL(){
+    Node *tmp = front;
+    while(tmp){
+        cout<<tmp->data<<" ";
+        tmp = tmp->next;
+    }
+    cout<<endl;
+}
+
 int main(){
-    enqueCir(10);
-    enqueCir(50);
-    enqueCir(30);
-    enqueCir(20);
-    printC();
-    dequeCir();
-    dequeCir();
-    printC();
+    enQue(10);
+    enQue(50);
+    enQue(30);
+    enQue(20);
+    printLL();
+    dque();
+    dque();
+    dque();
+    dque();
+    dque();
+    printLL();
 }
