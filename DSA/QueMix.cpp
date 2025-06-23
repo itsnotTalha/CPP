@@ -46,17 +46,17 @@ void printLin(){
 
 //Circular
 bool isCmt(){
-    return !F==-1;
+    return F==-1;
 }
 bool isCFull(){
-    return !(F==0 and R==sz-1) or R+1==F;
+    return F==(R+1)%sz;
 }
 void enqueCir(int n){
-    if(isCmt()){
+    if(!isCFull()){
         if(F==-1){
             R = F = 0;
         }else{
-            R++;
+            R = (R+1)%sz;
         }
         qlist[R]=n;
     }else{
@@ -64,15 +64,21 @@ void enqueCir(int n){
     }
 }
 void dequeCir(){
-    if(isCmt()){
+    if(!isCmt()){
         if(F==R){
             F = R = -1;
         }else{
-            F++;
+            F = (F+1)%sz;
         }
     }else{
         cout<<"UNDERFLOW\n";
     }
+}
+
+void printC(){
+    for(int i = F; i<=R; i=(i+1)%sz)
+    cout<<qlist[i]<<" ";
+    cout<<endl;
 }
 
 int main(){
@@ -80,8 +86,8 @@ int main(){
     enqueCir(50);
     enqueCir(30);
     enqueCir(20);
-    printLin();
+    printC();
     dequeCir();
     dequeCir();
-    printLin();
+    printC();
 }
