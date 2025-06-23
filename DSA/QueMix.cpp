@@ -44,13 +44,44 @@ void printLin(){
     cout<<endl;
 }
 
+//Circular
+bool isCmt(){
+    return !F==-1;
+}
+bool isCFull(){
+    return !(F==0 and R==sz-1) or R+1==F;
+}
+void enqueCir(int n){
+    if(isCmt()){
+        if(F==-1){
+            R = F = 0;
+        }else{
+            R++;
+        }
+        qlist[R]=n;
+    }else{
+        cout<<"OVERFLOW\n";
+    }
+}
+void dequeCir(){
+    if(isCmt()){
+        if(F==R){
+            F = R = -1;
+        }else{
+            F++;
+        }
+    }else{
+        cout<<"UNDERFLOW\n";
+    }
+}
+
 int main(){
-    enqueLin(10);
-    enqueLin(50);
-    enqueLin(30);
-    enqueLin(20);
+    enqueCir(10);
+    enqueCir(50);
+    enqueCir(30);
+    enqueCir(20);
     printLin();
-    dequeLin();
-    dequeLin();
+    dequeCir();
+    dequeCir();
     printLin();
 }
