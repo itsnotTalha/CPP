@@ -4,20 +4,21 @@ int main(){
     vector<int> tickets = {2,3,2};
     int k = 2;
     int total  = 0;
-    queue<int> q;
-    for(int x : tickets) q.push(x);
-    int tmp = tickets[k];
-    int i = 0;
-    while(tmp){
-        if(q.front()-1>0){
-            q.push(q.front()-1);
-            q.pop();
-        }else{
-            q.pop();
-        }
-        if(i%k==0) tmp--;
+    queue<int> indx;
+    for(int i = 0; i<tickets.size(); i++){
+        indx.push(i);
+    }
+    while(!indx.empty()){
         total++;
-        i++;
+        if(k==indx.front() and tickets[indx.front()]==0)
+        //return total;
+        break;
+
+        if(tickets[indx.front()]!=0){
+            indx.push(indx.front());
+        }
+        indx.pop();
+        //return total;
     }
     cout<<total;
 }
