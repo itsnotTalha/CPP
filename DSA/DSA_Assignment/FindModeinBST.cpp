@@ -3,7 +3,7 @@ using namespace std;
 
 class Solution {
 public:
-    TreeNode* prevNode = nullptr; 
+    TreeNode* prevNode = NULL; 
     int currCount = 0;            
     int maxCount = 0;              
     vector<int> modes;             
