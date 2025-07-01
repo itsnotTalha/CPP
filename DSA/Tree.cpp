@@ -6,6 +6,12 @@ struct Node{
     Node *left;
     Node *right;
 };
+int height(Node *root) {
+    if (root == NULL) return -1;
+    int leftH = height(root->left);
+    int rightH = height(root->right);
+    return 1 + max(leftH, rightH);
+}
 Node *insertNode(Node *root,int v){
     if(root==NULL){
         Node *n = new Node;
