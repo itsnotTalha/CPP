@@ -11,6 +11,8 @@ struct Node
 
 int V,E;
 Node *g[10] = {};
+bool dekhsi[10];
+int t, start[10], finish[10], disc[10];
 
 void makegraph(int a, int b, int w){
     Node *newNode = new Node;
@@ -41,7 +43,7 @@ void printPath(int p[], int j) {
     printPath(p, p[j]);
     cout << " -> " << j;
 }
-
+/*
 void BFS(int src, int dest){
     int d[V],p[V];
     bool seen[V];
@@ -61,9 +63,9 @@ void BFS(int src, int dest){
     while(!Q.empty()){
         int cur = Q.front();
         Q.pop();
-
+        
         cout << cur << " ";
-
+        
         if (cur == dest) {
             cout << endl;
             cout << "Shortest path from " << src << " to " << dest << ": ";
@@ -90,13 +92,77 @@ void BFS(int src, int dest){
         cout << "Destination " << dest << " not reachable from source " << src << endl;
     }
 }
+*/
+/*
+void BFS(int src){
+    char color[V];
+    int p[V],d[V];
+    for(int i=0;i<V;i++){
+        color[i]='W';
+        p[i] = -1;
+        d[i] = INF;
+    }
+    color[src] = 'G';
+    d[src] = 0;
+    queue<int> Q;
+    Q.push(src);
+    while(!Q.empty()){
+        int cur = Q.front();
+        Q.pop();
+
+        Node *neighbors = g[cur];
+        while(neighbors){
+            int n = neighbors->v;
+            if(color[n]=='W'){
+                color[n]='G';
+                p[n] = cur;
+                d[n] = d[cur]+1;
+                Q.push(n);
+            }
+            neighbors=neighbors->next;
+        }
+        color[cur] = 'B';
+        cout<<cur<<"->";
+    }
+}
+*/
+
+void DFS_visit(int src){
+    t++;
+    dekhsi[src] = true;
+    disc[src] = t;
+    
+    Node *vertices = g[src];
+    while(vertices){
+        int n = vertices->val;
+        if(!dekhsi[n]){
+            DFS_visit(n);
+        }
+        vertices = vertices->next;
+    }
+    t++;
+    finish[src] = t;
+    cout<<src<<"->";
+}
+
+void DFS(){
+    int t = 0;
+    for(int i =0; i<V; i++){
+        dekhsi[i] = false;
+    }
+    for(int i = 0; i<V; i++){
+        if(!dekhsi[i]){
+            DFS_visit(i);
+        }
+    }
+}
 
 int main(){
     cin>>V>>E;
     for(int i = 0; i<E; i++){
-        int a, b, w; cin>>a>>b>>w;
-        makegraph(a,b,w);
-        makegraph(b,a,w);
+        int a, b, w; cin>>a>>b;
+        makegraph(a,b,1);
+        //makegraph(b,a,w);
     }
     for(int i = 0; i<V; i++){
         cout<<"Adjacent list of "<<i<<": ";
@@ -104,5 +170,5 @@ int main(){
         printList(ptr);
         cout<<endl;
     }
-    BFS(1,3);
+    DFS();
 }
