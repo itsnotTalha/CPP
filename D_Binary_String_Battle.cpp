@@ -32,31 +32,32 @@ typedef pair<int, int> pii;
 
 int main() {
     Fast_io;
-    int t; 
-    cin >> t;
-    while (t--) {
-        int n;
-        cin >> n;
-        vi a(n);
-        ip(a, n);
-
-        bool flag = false;
-        int diff = INT_MAX;
-        for0(i, n - 1) {
-            int tmp = abs(a[i] - a[i + 1]);
-            if (tmp <= 1) {
-                flag = true;
-                break;
-            }
-            diff = min(diff, tmp);
+    int t; cin>>t;
+    while(t--){
+        int n, k; cin>>n>>k;
+        string s; cin>>s;
+        int c1 = 0;
+        for0(i,n){
+            if(s[i]=='1') c1++;
         }
-
-        if (flag) {
-            cout << "0\n";
-        } else if (n <= 2) {
-            cout << "-1\n";
-        } else {
-           cout<<(diff+1)/2<<endl;
+        if(c1<=k){
+            cout<<"Alice"<<endl;
+            continue;
+        }
+        bool has0 = false;
+        int c0 = 0;
+        for0(i, n){
+            if(s[i]=='0') c0++;
+            else c0 = 0;
+            if(c0>=k){
+                has0 = true;
+                break;
+            } 
+        }
+        if(has0 or (2*k<=n)){
+            cout<<"Bob"<<endl;
+        }else{
+            cout<<"Alice"<<endl;
         }
     }
     return 0;
