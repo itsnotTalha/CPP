@@ -156,6 +156,46 @@ void DFS(){
         }
     }
 }
+/*
+bool isCyclicUndirected() {
+    bool visited[V] = {};
+    int parent[V] = {};
+
+    for (int start = 0; start < V; start++) {
+        if (visited[start]) continue;
+
+        queue<int> Q;
+        visited[start] = true;
+        parent[start] = -1;
+
+        Q.push(start);
+
+        while (!Q.empty()) {
+            int u = Q.front();
+            Q.pop();
+
+            Node *neighbor = g[u];
+            while (neighbor) {
+                int v = neighbor->val;
+
+                if (!visited[v]) {
+                    visited[v] = true;
+                    parent[v] = u;
+                    Q.push(v);
+                } else if (parent[u] != v) {
+                    // Found a visited neighbor which is not my parent ⇒ cycle!
+                    return true;
+                }
+
+                neighbor = neighbor->next;
+            }
+        }
+    }
+
+    return false; // No cycles found
+}
+
+*/
 
 int main(){
     cin>>V>>E;
