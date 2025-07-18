@@ -30,20 +30,26 @@ typedef pair<int, int> pii;
 
 #define ip(a, n) for0(i, n) cin >> a[i]
 
+bool isPrime(int n) {
+    if (n <= 1) {
+        return false;
+    }
+    for (int i = 2; i <= sqrt(n); ++i) {
+        if (n % i == 0) { 
+            return false;
+        }
+    }
+    return true;
+}
+
+
 int main() {
     Fast_io;
     int t; cin>>t;
     while(t--){
-
-        string s; cin>>s;
-        int i = s.size()-1;
-            if(s[i]=='s'){
-                if(s[i-1]=='u'){
-                    s[i-1] = 'i';
-                    s.pop_back();
-                }
-            }
-        cout<<s<<endl;
+        int x, k;
+        cin>>x>>k;
+        cout<<(isPrime(x) ? "YES" : "NO")<<endl;
     }
     return 0;
 }

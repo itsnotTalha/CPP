@@ -34,16 +34,18 @@ int main() {
     Fast_io;
     int t; cin>>t;
     while(t--){
-
-        string s; cin>>s;
-        int i = s.size()-1;
-            if(s[i]=='s'){
-                if(s[i-1]=='u'){
-                    s[i-1] = 'i';
-                    s.pop_back();
-                }
+        ll n; cin>>n;
+        vector<ll> a(n);
+        ip(a,n);
+        ll maxSum = 0;
+        for0(i,n){
+            ll curSum = 0;
+            for0(j,n){
+                curSum+=(a[i] ^ a[j]);
             }
-        cout<<s<<endl;
+            maxSum = max(maxSum, curSum);
+        }
+        cout<<maxSum<<endl;
     }
     return 0;
 }

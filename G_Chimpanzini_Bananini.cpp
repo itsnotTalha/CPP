@@ -34,16 +34,26 @@ int main() {
     Fast_io;
     int t; cin>>t;
     while(t--){
-
-        string s; cin>>s;
-        int i = s.size()-1;
-            if(s[i]=='s'){
-                if(s[i-1]=='u'){
-                    s[i-1] = 'i';
-                    s.pop_back();
-                }
+        int q; cin>>q;
+        deque<int> a;
+        for0(i,q){
+            ll sum=0;
+            int s; cin>>s;
+            if(s==1){
+                a.push_front(a.back());
+                a.pop_back();
+            }else if(s==2){
+                reverse(all(a));
+            }else if(s==3){
+                int k; cin>>k;
+                a.push_back(k);
             }
-        cout<<s<<endl;
+            for0(j, a.size()){
+                sum+=a[j]*(j+1);
+            }
+            cout<<sum<<endl;
+        }
+        
     }
     return 0;
 }

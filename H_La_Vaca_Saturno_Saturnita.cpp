@@ -30,20 +30,28 @@ typedef pair<int, int> pii;
 
 #define ip(a, n) for0(i, n) cin >> a[i]
 
+ll f(ll k, const vector<ll>& a, ll l, ll r) {
+    ll ans = 0;
+    for (int i = l; i <= r; ++i) {
+        while (k%a[i]==0) {
+            k/=a[i];
+        }
+        ans+=k;
+    }
+    return ans;
+}
+
 int main() {
     Fast_io;
     int t; cin>>t;
     while(t--){
-
-        string s; cin>>s;
-        int i = s.size()-1;
-            if(s[i]=='s'){
-                if(s[i-1]=='u'){
-                    s[i-1] = 'i';
-                    s.pop_back();
-                }
-            }
-        cout<<s<<endl;
+        int n, q; cin>>n>>q;
+        vector<ll> a(n);
+        ip(a,n);
+        for0(i,q){
+            ll k,l,r; cin>>k>>l>>r;
+            cout<<f(k,a,l,r)<<endl;
+        }
     }
     return 0;
 }
