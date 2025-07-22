@@ -49,6 +49,8 @@ int main() {
     while(t--){
         int x, k;
         cin>>x>>k;
+        if(k>1) cout<<"NO"<<endl;
+        else
         cout<<(isPrime(x) ? "YES" : "NO")<<endl;
     }
     return 0;
