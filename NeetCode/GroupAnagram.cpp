@@ -22,26 +22,19 @@ int main(){
         cin>>s;
         strs.push_back(s);
     }
+    unordered_map<string, vector<string>> res;
     vector<pair<string,int>>tmp1;
       for(int i = 0; i<strs.size(); i++){
         tmp1.push_back(make_pair(strs[i], i));
       }
       sort(tmp1.begin(), tmp1.end());
-      for(auto &a : tmp1){
-        sort(a.first.begin(), a.first.end());
+      for(auto &a : strs){
+        string s = a;
+        sort(s.begin(), s.end());
+        res[s].push_back(a);
       }
-      vector<string> prev;
-      for(auto &a : tmp1){
-        if(prev.empty()) prev.push_back(strs[a.second]);
-        else{
-            if(strs[a.second]==prev.back())prev.push_back(strs[a.second]);
-            else{
-                ans.push_back(prev);
-                prev.clear();
-                prev.push_back(strs[a.second]);
-            }
-        }
+      for(auto &a : res){
+        ans.push_back(a.second);
       }
-      ans.push_back(prev);
     return ans;
 }
