@@ -18,10 +18,21 @@ void pre(){
     }
 }
 void print(){
-    for(int i = 0; i<5; i++){
-        for(int j =0; j<9; j++)
-        cout<<k[i][j]<<" ";
-        cout<<endl;
+    for(int i = 0; i <= n; i++){
+        for(int j = 0; j <= m; j++)
+            cout << k[i][j] << " ";
+        cout << endl;
+    }
+
+
+    int i = n, j = m;
+    cout << "\nSelected items:\n";
+    while(i > 0 && j > 0){
+        if(k[i][j] != k[i-1][j]){  // item i included
+            cout << "Item " << i << " (P=" << P[i] << ", W=" << wt[i] << ")\n";
+            j -= wt[i];
+        }
+        i--;
     }
 }
 int main(){
