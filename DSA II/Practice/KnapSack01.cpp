@@ -43,30 +43,41 @@ int knapSack(int c, int i){
     }
 }
 
+int bottomUp(int c, int i){
+    for(int r = 1; r<=c; r++)
+    for(int col = 1; col<=i; col++)
+    knapSack(r,col);
+
+    return memo[c][i];
+}
+
 void takenItem(int c, int i){
     cout<<"Maximum profit : "<<memo[c][i]<<endl;
     cout<<"Taken items: "<<endl;
-    for(int i = 0; i<=c; i++)
-    for(int j = 0; j<=i; j++){
-        if(pTable[i][j]=='T'){
+    int cap = c;
+    while(cap>0 and i>0){
+        if(pTable[cap][i]=='T'){
             cout<<"Item "<<i<<" is taken ";
-            cout<<"Weight and Price: "<<W[j]<<" "<<P[j]<<endl;
-        }
+            cout<<"Weight and Price: "<<W[i]<<" "<<P[i]<<endl;
+            cap-=W[i];
+        }else i--;
     }
 }
 
 int main(){
     cout<<"Cap and item:\n";
     int c, i;  cin>>c>>i;
+    cout<<"Enter weight: ";
     for(int j = 1; j<=i; j++){
         cin>>W[j];
     }
+    cout<<"\nEnter price: ";
     for(int j = 1; j<=i; j++){
         cin>>P[j];
     }
     initMemo();
     printMemo(c,i);
-    int result = knapSack(c, i);
+    int result = bottomUp(c, i);
     takenItem(c,i);
     printMemo(c,i);
 }
