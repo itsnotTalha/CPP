@@ -81,3 +81,72 @@ int main(){
     takenItem(c,i);
     printMemo(c,i);
 }
+
+class Knapsack{
+    public:
+    int P[100], W[100], memo[100][100], pTable[100][100];
+
+    void initMemo(){
+        for(int i = 0; i<100; i++)
+        for(int j = 0; j<100; j++)
+        if(i==0 or j==0) memo[i][j]=0;
+        else memo[i][j]=-1;
+    }
+    void PrintMemo(int C, int i){
+        for(int i = 1; i<=C; i++){
+            for(int j = 1; j<=i; j++)
+            cout<<memo[i][j]<<' ';
+            cout<<endl;
+        }
+    }
+
+    int Knapsex(int C, int i){
+        if(C==0 or i==0) return 0;
+        if(memo[C][i]!=-1) return memo[C][i];
+
+        int taken, notTaken;
+        notTaken = 0 + Knapsex(C, i-1);
+        
+        if(C>=W[i]){
+            taken = P[i]+Knapsex(C-W[i], i-1);
+        }else{
+            taken = 0;
+        }
+
+        if(notTaken>=taken){
+            pTable[C][i] = 'N';
+            memo[C][i] = notTaken;
+            return notTaken;
+        }else{
+            pTable[C][i] = 'T';
+            memo[C][i] = taken;
+            return taken;
+        }
+    }
+
+    void bottomUp(int C, int item){
+        for(int i = 1; i<=C; i++)
+        for(int j = 1; j<=item; j++)
+        Knapsex(i,j);
+    }
+    void PrintAns(int C, int item){
+        cout<<"Max is : "<<memo[C][item]<<endl;
+        while(C>0 and item>0){
+            if(pTable[C][item]=='T'){
+                cout<<"Item "<<item<<" is taken and its vlaue is "<<P[item]<<endl;
+                C-=W[item];
+            }
+            item--;
+        }
+    }
+    void PrintAnsRec(int C, int item){
+        if(C==0 or item==0) return;
+        if(pTable[C][item]=='T'){
+            cout<<"Item "<<item<<" is taken and its vlaue is "<<P[item]<<endl;
+            PrintAns(C-W[item], item-1);
+        }else{
+            PrintAns(C, item-1);
+        }
+    }
+    
+};
