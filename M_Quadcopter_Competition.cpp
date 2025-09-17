@@ -41,13 +41,13 @@ int main() {
         int t = abs(y2-y1);
         if(t==1) sum += 8;
         else{
-            sum+=((t-1)*2);
+            sum+=((t-1)*2)+8;
         }
     }else if(y1==y2){
         int t = abs(x2-x1);
         if(t==1) sum += 8;
         else{
-            sum+=((t-1)*2);
+            sum+=((t-1)*2)+8;
         }
     }else{
         sum+=(abs(x2-x1)+1 + abs(y2-y1)+1)*2;
