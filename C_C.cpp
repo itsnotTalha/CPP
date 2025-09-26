@@ -35,23 +35,13 @@ typedef pair<int, int> pii;
 
 int main() {
     Fast_io;
-    int x1,y1,x2,y2; cin>>x1>>y1>>x2>>y2;
-    int sum = 0;
-    if(x1==x2){
-        int t = abs(y2-y1);
-        if(t==1) sum += 8;
-        else{
-            sum+=((t-1)*2)+8;
-        }
-    }else if(y1==y2){`
-        int t = abs(x2-x1);
-        if(t==1) sum += 8;
-        else{
-            sum+=((t-1)*2)+8;
-        }
-    }else{
-        sum+=(abs(x2-x1)+1 + abs(y2-y1)+1)*2;
+    ll n; cin>>n;
+    ll sum1 = 0, sum2 = 0;
+    for(int i = 1; i<=n; i++){
+        int a,b; cin>>a>>b;
+        sum1+=a;
+        if(i<n) sum2+=b;
     }
-    cout<<sum<<endl;   
+    cout<<sum1-sum2<<endl;
     return 0;
 }

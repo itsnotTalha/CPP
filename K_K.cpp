@@ -33,25 +33,23 @@ typedef pair<int, int> pii;
 
 #define ip(a, n) for0(i, n) cin >> a[i]
 
+bool check(int a, int b, int c, int d){
+    bool ans = (b<=a or d<=c)?true:false;
+    return ans;
+}
+
+void solve(){
+    int a, b, c, d; cin>>a>>b>>c>>d;
+    int a1, b1, c1, d1; cin>>a1>>b1>>c1>>d1;
+    if(a<a1 and b<b1 and c<c1 and d<d1) cout<<"OK\n";
+    else cout<<"STOP\n";
+}
+
 int main() {
     Fast_io;
-    int x1,y1,x2,y2; cin>>x1>>y1>>x2>>y2;
-    int sum = 0;
-    if(x1==x2){
-        int t = abs(y2-y1);
-        if(t==1) sum += 8;
-        else{
-            sum+=((t-1)*2)+8;
-        }
-    }else if(y1==y2){`
-        int t = abs(x2-x1);
-        if(t==1) sum += 8;
-        else{
-            sum+=((t-1)*2)+8;
-        }
-    }else{
-        sum+=(abs(x2-x1)+1 + abs(y2-y1)+1)*2;
-    }
-    cout<<sum<<endl;   
+    int t; cin>>t;
+    while(t--){
+        solve();
+    }   
     return 0;
 }

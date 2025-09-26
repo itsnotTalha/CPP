@@ -33,25 +33,29 @@ typedef pair<int, int> pii;
 
 #define ip(a, n) for0(i, n) cin >> a[i]
 
+bool ifContain(string s, int l, int r){
+    unordered_map<char,int> hashMap;
+    hashMap['k'] = 0;
+    hashMap['e'] = 0;
+    hashMap['o'] = 0;
+    for(char x : s){
+        hashMap[x]++;
+    }
+    return hashMap['k']>=2 and hashMap['e']>=1 and hashMap['o']>=1;
+}
+
 int main() {
     Fast_io;
-    int x1,y1,x2,y2; cin>>x1>>y1>>x2>>y2;
-    int sum = 0;
-    if(x1==x2){
-        int t = abs(y2-y1);
-        if(t==1) sum += 8;
-        else{
-            sum+=((t-1)*2)+8;
-        }
-    }else if(y1==y2){`
-        int t = abs(x2-x1);
-        if(t==1) sum += 8;
-        else{
-            sum+=((t-1)*2)+8;
-        }
-    }else{
-        sum+=(abs(x2-x1)+1 + abs(y2-y1)+1)*2;
+    int n, q; cin>>n>>q;
+    int total = 0;
+    while(q--){
+        int l,r; cin>>l>>r;
+
     }
-    cout<<sum<<endl;   
     return 0;
+}
+
+int st = 4, en = 2
+while(i!=1){
+    
 }

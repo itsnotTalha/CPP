@@ -57,7 +57,7 @@ void Prims(vector<vector<pair<int,int>>> &adj , int v, int e, int s){
 }
 
 int main(){
-    cout<<"Enter Vertex and Edges :";
+    cout<<"Hello world";
     int V, E; cin>>V>>E;
     vector<vector<pair<int,int>>> adj(V+1);
     for(int i = 1; i<=E; i++){

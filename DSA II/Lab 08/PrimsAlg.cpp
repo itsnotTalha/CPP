@@ -87,7 +87,7 @@ void Prims(vector<vector<pair<int,int>>>  &adjL, int V, int E, int s){
     cout<<endl;
     cout<<"PARENTT: ";
     for(int i = 1; i<=V; i++) cout<<parent[i]<<" ";
-    cout<<endl;
+    cout<<endl;         
     cout<<"inMST: ";
     for(int i = 1; i<=V; i++) cout<<inMST[i]<<" ";
     cout<<endl;
