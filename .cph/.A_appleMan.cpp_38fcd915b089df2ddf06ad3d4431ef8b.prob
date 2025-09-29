@@ -1,0 +1,1 @@
+{"name":"Local: A_appleMan","url":"c:\\Git\\CPP\\A_appleMan.cpp","tests":[{"id":1759158154870,"input":"3\nxxo\nxox\noxx\n","output":"YES"},{"id":1759158202243,"input":"4\nxxxo\nxoxo\noxox\nxxxx\n","output":"NO"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Git\\CPP\\A_appleMan.cpp","group":"local","local":true}
