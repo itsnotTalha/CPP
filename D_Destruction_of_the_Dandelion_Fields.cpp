@@ -55,6 +55,7 @@ void solve(){
         cout<<0<<endl;
         return;
     }
+    sort(all(odd), greater<ll>());
     int i = 1;
     while(!odd.empty()){
         if(i%2){
