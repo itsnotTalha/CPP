@@ -33,29 +33,20 @@ typedef pair<int, int> pii;
 
 #define ip(a, n) for0(i, n) cin >> a[i]
 
-void solve(){
-    int n; cin>>n;
-    string s; cin>>s;
-    unordered_map<char,int>hashM;
-    hashM['A']=0, hashM['B']=0, hashM['S']=0;
-    for(int i = 0; i<n; i++){
-        hashM[s[i]]++;
-    }
-    if(hashM['A']==0 and hashM['B']>0 or hashM['A']>0 and hashM['B']==0){
-        cout<<hashM['A']+hashM['B']<<endl;
-    }else{
-        int cnt=0;
-        if(hashM['S']>0 and (hashM['A']==0 or hashM['B']==0)) cnt+=2;
-        else if (hashM['A']>0 and hashM['B']>0) cnt++;
-        cout<<cnt<<endl;
-    }
-}
-
 int main() {
     Fast_io;
-    int t;cin>>t;
+    int t; cin>>t;
     while(t--){
-        solve();
+        int n,m; cin>>n>>m;
+        ll sum1=0, sum2=0;
+        int i = 1;
+        int k = m-n+1;
+        while(i<=m){
+            if(i%2) sum1+=n;
+            else sum2+=n;
+            i++;
+        }
+        cout<<sum1-sum2<<endl;
     }
     return 0;
 }
