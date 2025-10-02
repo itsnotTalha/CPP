@@ -35,21 +35,23 @@ typedef pair<int, int> pii;
 
 void solve(){
     int n; cin>>n;
-    int c0=0, c1=0;
-    for(int i =0; i<n; i++){
-        int t; cin>>t;
-        if(t<0) c1++;
-        else if(t==0) c0++;
+    vector<int> a(n);
+    ip(a,n);
+    sortall(a);
+    vector<int> b;
+    for(int i = 0; i<n; i+=2){
+        b.push_back(abs(a[i]-a[i+1]));
     }
-    int ans = 0;
-    ans+=c0;
-    if(c1%2) ans+=2;
-    cout<<ans<<endl;
+    int mx = INT_MIN;
+    for(int x : b){
+        if(x>mx) mx = x;
+    }
+    cout<<mx<<endl;
 }
 
 int main() {
     Fast_io;
-    int t; cin>>t; 
-    while(t--) solve(); 
+    int t; cin>>t;
+    while(t--) solve();   
     return 0;
 }

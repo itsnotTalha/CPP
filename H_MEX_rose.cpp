@@ -34,22 +34,18 @@ typedef pair<int, int> pii;
 #define ip(a, n) for0(i, n) cin >> a[i]
 
 void solve(){
-    int n; cin>>n;
-    int c0=0, c1=0;
-    for(int i =0; i<n; i++){
+    int n,k; cin>>n>>k;
+    ll cnt = 0;
+    for(int i = 0; i<n; i++){
         int t; cin>>t;
-        if(t<0) c1++;
-        else if(t==0) c0++;
+        if(t==k)cnt++;
     }
-    int ans = 0;
-    ans+=c0;
-    if(c1%2) ans+=2;
-    cout<<ans<<endl;
+    cout<<cnt<<endl;
 }
 
 int main() {
     Fast_io;
-    int t; cin>>t; 
-    while(t--) solve(); 
+    int t; cin>>t;
+    while(t--) solve();   
     return 0;
 }
