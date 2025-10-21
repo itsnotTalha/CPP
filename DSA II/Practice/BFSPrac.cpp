@@ -31,9 +31,13 @@ void BFS(vector<vector<int>> adjList, int V, int E, int src){
             }
         }
     }
-    for(int i = 1; i<=V; i++){
-cout<<"V = "<<i<<", Color = "<<(char)Color[i]<<", Dist = "<<dist[i]<<", Parent = "<<Parent[i]<<endl;
-}
+cout << "\n\n--- BFS Result ---\n";
+    for (int i = 1; i <= V; i++) {
+        cout << "V = " << i 
+             << ", Color = " << (char)Color[i]
+             << ", Dist = " << dist[i]
+             << ", Parent = " << Parent[i] << endl;
+    }
 }
 
 int main(){
