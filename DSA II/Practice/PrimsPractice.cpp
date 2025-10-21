@@ -23,7 +23,7 @@ struct PQNode{
 
 struct Comaparator{
     bool operator()(PQNode a, PQNode b){
-        return a.k<b.k;
+        return a.k>b.k;
     }
 };
 
