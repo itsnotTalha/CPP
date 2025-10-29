@@ -10,20 +10,22 @@ int main(){
     // cout<<(n)%11<<endl;
     // //cout<<"Hash 2: "<<(3*n %13)+1<<endl;
 
-    int s = 9, u = 5, n = 3, b = 2, e = 7, a = 1, m = 4;
+    int s = 2, u = 3, n = 5, b = 7, e = 11, a = 1, m = 4;
     unordered_map<char, int> hashMap;
 
     // Store key-value pairs
-    hashMap['s'] = s;
-    hashMap['u'] = u;
-    hashMap['n'] = n;
-    hashMap['b'] = b;
-    hashMap['e'] = e;
-    hashMap['a'] = a;
-    hashMap['m'] = m;
+    hashMap['a'] = s;
+    hashMap['b'] = u;
+    hashMap['c'] = n;
+    hashMap['d'] = b;
+    hashMap['f'] = e;
+
     string str; cin>>str;
-    int hashVal = (hashMap[str[2]] * 49 + hashMap[str[1]] * 7 + hashMap[str[0]] * 1);
-        cout<<hashVal<<" => "<<hashVal%29<<" -> "<<hashMap[str[2]] * 49<<" | "<<hashMap[str[1]] * 7
-        <<" | "<<hashMap[str[0]]<<endl;
+    int hashVal = ((hashMap[str[2]] * 36) + (hashMap[str[1]] * 6) + (hashMap[str[0]] * 1));
+        cout<<hashVal
+        //<<" => "<<hashVal
+        <<" -> "<<hashVal%131
+        <<" -> "<<hashVal-hashMap[str[0]]
+        <<endl;
     }
 }
